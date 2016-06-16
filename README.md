@@ -2,3 +2,7 @@
 
 # txci
 Sample project used for integration testing in Transifex
+
+## Travis CI integration
+
+In Travis, export the environment variables `TXUSER` and `TXPASSWD`, which should correspond to the credentials of the Transifex user who has project maintainance rights.
