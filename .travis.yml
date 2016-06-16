@@ -4,7 +4,7 @@ install:
   - pip install transifex-client
 
 script:
-  - echo "Run something"
+  - echo "Test and build your app."
 
 after_success:
   - ./transifex.sh
