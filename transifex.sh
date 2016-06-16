@@ -15,7 +15,5 @@ hostname = https://www.transifex.com
 username = $TXUSER
 password = $TXPASSWD
 token =" > ~/.transifexrc
-    tx push --source --translations --no-interactive
+    tx push --source -l en --no-interactive
 fi
-
-
