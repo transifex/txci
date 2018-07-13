@@ -1,0 +1,36 @@
+defaults: &defaults
+  docker:
+    - image: python:2.7
+
+version: 2
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: echo "testing!"
+      - persist_to_workspace:
+          root: txci
+          paths:
+            - locale
+  transifex:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: txci
+
+      - run: cd txci && ./transifex.sh
+workflows:
+  version: 2
+
+  my-ci-flow:
+    jobs:
+      - test
+      - transifex:
+          requires:
+            - test 
+          filters:
+            branches:
+              only:
+                master
